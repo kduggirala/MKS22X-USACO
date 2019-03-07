@@ -3,15 +3,16 @@ import java.util.*;
 public class USACO {
 	public static void main(String[] args) {
 		try {
-			System.out.println(bronze(args[0]));
-			System.out.println(silver(args[1]));
+			System.out.println(bronze(args[0]) - new Scanner(new File(args[1])).nextInt());
+			System.out.println(silver(args[2]) - new Scanner(new File(args[3])).nextInt());
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("NO");
 		}
 	}
 	public static int bronze(String filename) throws FileNotFoundException {
-		Scanner sc = new Scanner(filename);
+		File file = new File(filename);
+		Scanner sc = new Scanner(file);
 		int r = sc.nextInt();
 		int c = sc.nextInt();
 		int[][] field = new int[r][c];
@@ -64,13 +65,14 @@ public class USACO {
 		return max;
 	}
 	public static int silver(String filename) throws FileNotFoundException {
-		Scanner sc = new Scanner(filename);
+		File file = new File(filename);
+		Scanner sc = new Scanner(file);
 		int r = sc.nextInt();
 		int c = sc.nextInt();
 		int t = sc.nextInt();
 		int[][] field = new int[r][c];
 		for (int i = 0; i < r; i++) {
-			String row = sc.nextLine();
+			String row = sc.next();
 			for (int j = 0; j < c; j++) {
 				if (row.substring(j, j + 1).equals("*")) {
 					field[i][j] = -1;
