@@ -1,6 +1,15 @@
 import java.io.*;
 import java.util.*;
 public class USACO {
+	public static void main(String[] args) {
+		try {
+			System.out.println(bronze(args[0]));
+			System.out.println(silver(args[1]));
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("NO");
+		}
+	}
 	public static int bronze(String filename) throws FileNotFoundException {
 		Scanner sc = new Scanner(filename);
 		int r = sc.nextInt();
