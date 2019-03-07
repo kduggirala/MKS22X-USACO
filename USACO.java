@@ -41,7 +41,7 @@ public class USACO {
 		}
 		sc.close();
 		return totalDepth * 72 * 72;
-		
+
 	}
 	private static int findMax(int r, int c, int[][] field) {
 		int max = 0;
@@ -75,7 +75,44 @@ public class USACO {
 		sc.close();
 		field[startr][startc] = 1;
 		for (int i = 0; i < t; i++) {
-			
+			int[][] newField = new int[r][c];
+			for (int j = 0; j < r; j++) {
+				for (int k = 0; k < c; k++) {
+					if (field[j][k] != -1) {
+						int newValue = 0;
+						try {
+							if (field[j + 1][k] != -1) {
+								newValue += field[j + 1][k];
+							}
+						}
+						catch(ArrayIndexOutOfBoundsException e) {
+						}
+						try {
+							if (field[j][k + 1] != -1) {
+								newValue += field[j][k + 1];
+							}
+						}
+						catch(ArrayIndexOutOfBoundsException e) {
+						}
+						try {
+							if (field[j - 1][k] != -1) {
+								newValue += field[j - 1][k];
+							}
+						}
+						catch(ArrayIndexOutOfBoundsException e) {
+						}
+						try {
+							if (field[j][k - 1] != -1) {
+								newValue += field[j][k - 1];
+							}
+						}
+						catch(ArrayIndexOutOfBoundsException e) {
+						}
+						newField[j][k] = newValue;
+					}
+				}
+			}
+			field = newField;
 		}
 		return field[finr][finc];	
 	}
