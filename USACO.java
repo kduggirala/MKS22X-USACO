@@ -19,9 +19,19 @@ public class USACO {
 				instrucs[k][i] = sc.nextInt();
 			}
 		}
-		
+		for (int[] instruc : instrucs) {
+			
+		}
+		int totalDepth = 0;
+		for (int[] row : field) {
+			for (int a : row) {
+				if (e - a > 0) {
+					totalDepth += (e-a);
+				}
+			}
+		}
 		sc.close();
-		return 0;
+		return totalDepth * 72 * 72;
 		
 	}
 	public static int silver(String filename) throws FileNotFoundException {
