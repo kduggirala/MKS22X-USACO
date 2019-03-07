@@ -55,6 +55,28 @@ public class USACO {
 		return max;
 	}
 	public static int silver(String filename) throws FileNotFoundException {
-		return 0;	
+		Scanner sc = new Scanner(filename);
+		int r = sc.nextInt();
+		int c = sc.nextInt();
+		int t = sc.nextInt();
+		int[][] field = new int[r][c];
+		for (int i = 0; i < r; i++) {
+			String row = sc.nextLine();
+			for (int j = 0; j < c; j++) {
+				if (row.substring(j, j + 1).equals("*")) {
+					field[i][j] = -1;
+				}
+			}
+		}
+		int startr = sc.nextInt();
+		int startc = sc.nextInt();
+		int finr = sc.nextInt();
+		int finc = sc.nextInt();
+		sc.close();
+		field[startr][startc] = 1;
+		for (int i = 0; i < t; i++) {
+			
+		}
+		return field[finr][finc];	
 	}
 }
