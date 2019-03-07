@@ -20,7 +20,16 @@ public class USACO {
 			}
 		}
 		for (int[] instruc : instrucs) {
-			
+			for (int k = 0; k < instruc[2]; k++) {
+				int max = findMax(instruc[0] - 1, instruc[1] - 1, field);
+				for (int i = instruc[0] - 1; i < instruc[0] + 2; i++) {
+					for (int j = instruc[1] - 1; j < instruc[1] + 2; j++) {
+						if (field[i][j] == max) {
+							field[i][j]--;
+						}
+					}
+				}
+			}
 		}
 		int totalDepth = 0;
 		for (int[] row : field) {
@@ -33,6 +42,17 @@ public class USACO {
 		sc.close();
 		return totalDepth * 72 * 72;
 		
+	}
+	private static int findMax(int r, int c, int[][] field) {
+		int max = 0;
+		for (int i = r; i <= r + 2; i++) {
+			for (int j = c; j <= c + 2; j++) {
+				if (field[r][c] > max) {
+					max = field[r][c];
+				}
+			}
+		}
+		return max;
 	}
 	public static int silver(String filename) throws FileNotFoundException {
 		return 0;	
