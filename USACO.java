@@ -72,6 +72,12 @@ public class USACO {
 		int startc = sc.nextInt();
 		int finr = sc.nextInt();
 		int finc = sc.nextInt();
+		final int[][] coords = {
+				{1, 0},
+				{0, 1},
+				{-1, 0},
+				{0, -1}
+		};
 		sc.close();
 		field[startr][startc] = 1;
 		for (int i = 0; i < t; i++) {
@@ -80,33 +86,14 @@ public class USACO {
 				for (int k = 0; k < c; k++) {
 					if (field[j][k] != -1) {
 						int newValue = 0;
-						try {
-							if (field[j + 1][k] != -1) {
-								newValue += field[j + 1][k];
+						for (int [] coord : coords ) {
+							try {
+								if (field[j + coord[0]][k + coord[1]] != -1) {
+									newValue += field[j + coord[0]][k + coord[1]];
+								}
 							}
-						}
-						catch(ArrayIndexOutOfBoundsException e) {
-						}
-						try {
-							if (field[j][k + 1] != -1) {
-								newValue += field[j][k + 1];
+							catch(ArrayIndexOutOfBoundsException e) {
 							}
-						}
-						catch(ArrayIndexOutOfBoundsException e) {
-						}
-						try {
-							if (field[j - 1][k] != -1) {
-								newValue += field[j - 1][k];
-							}
-						}
-						catch(ArrayIndexOutOfBoundsException e) {
-						}
-						try {
-							if (field[j][k - 1] != -1) {
-								newValue += field[j][k - 1];
-							}
-						}
-						catch(ArrayIndexOutOfBoundsException e) {
 						}
 						newField[j][k] = newValue;
 					}
