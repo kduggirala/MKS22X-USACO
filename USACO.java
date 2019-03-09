@@ -3,7 +3,7 @@ import java.util.*;
 public class USACO {
 	public static void main(String[] args) {
 		try {
-			System.out.println(bronze("makelake.2.in"));
+			System.out.println(silver("ctravel.1.in"));
 		}
 		catch(FileNotFoundException e) {
 			System.out.println(e);
@@ -72,16 +72,17 @@ public class USACO {
 		int[][] field = new int[r][c];
 		for (int i = 0; i < r; i++) {
 			String row = sc.next();
+			System.out.println(row);
 			for (int j = 0; j < c; j++) {
 				if (row.substring(j, j + 1).equals("*")) {
 					field[i][j] = -1;
 				}
 			}
 		}
-		int startr = sc.nextInt();
-		int startc = sc.nextInt();
-		int finr = sc.nextInt();
-		int finc = sc.nextInt();
+		int startr = sc.nextInt() - 1;
+		int startc = sc.nextInt() - 1;
+		int finr = sc.nextInt() - 1;
+		int finc = sc.nextInt() - 1;
 		final int[][] coords = {
 				{1, 0},
 				{0, 1},
