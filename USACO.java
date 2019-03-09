@@ -72,7 +72,6 @@ public class USACO {
 		int[][] field = new int[r][c];
 		for (int i = 0; i < r; i++) {
 			String row = sc.next();
-			System.out.println(row);
 			for (int j = 0; j < c; j++) {
 				if (row.substring(j, j + 1).equals("*")) {
 					field[i][j] = -1;
@@ -107,6 +106,9 @@ public class USACO {
 							}
 						}
 						newField[j][k] = newValue;
+					}
+					else {
+						newField[j][k] = -1;
 					}
 				}
 			}
