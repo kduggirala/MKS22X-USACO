@@ -3,11 +3,10 @@ import java.util.*;
 public class USACO {
 	public static void main(String[] args) {
 		try {
-			System.out.println(bronze(args[0]) - new Scanner(new File(args[1])).nextInt());
-			System.out.println(silver(args[2]) - new Scanner(new File(args[3])).nextInt());
+			System.out.println(bronze("makelake.2.in"));
 		}
 		catch(FileNotFoundException e) {
-			System.out.println("NO");
+			System.out.println(e);
 		}
 	}
 	public static int bronze(String filename) throws FileNotFoundException {
@@ -30,13 +29,13 @@ public class USACO {
 			}
 		}
 		for (int[] instruc : instrucs) {
-			for (int k = 0; k < instruc[2]; k++) {
-				int max = findMax(instruc[0] - 1, instruc[1] - 1, field);
-				for (int i = instruc[0] - 1; i < instruc[0] + 2; i++) {
-					for (int j = instruc[1] - 1; j < instruc[1] + 2; j++) {
-						if (field[i][j] == max) {
-							field[i][j]--;
-						}
+			int max = findMax(instruc[0] - 1, instruc[1] - 1, field); //find highest elevation in the required 3 x 3 square of the field
+			int finalElev = max - instruc[2]; //find possible highest elevation after cowstomping
+			
+			for (int i = instruc[0] - 1; i < instruc[0] + 2; i++) { //loop through 3x3 square
+				for (int j = instruc[1] - 1; j < instruc[1] + 2; j++) {
+					if (field[i][j]  > finalElev && finalElev >= 0) { //if higher than the post-cowstomping elevation, the 
+						field[i][j] = finalElev;
 					}
 				}
 			}
@@ -50,15 +49,15 @@ public class USACO {
 			}
 		}
 		sc.close();
-		return totalDepth * 72 * 72;
+		return (totalDepth * 72 * 72);
 
 	}
 	private static int findMax(int r, int c, int[][] field) {
 		int max = 0;
-		for (int i = r; i <= r + 2; i++) {
-			for (int j = c; j <= c + 2; j++) {
-				if (field[r][c] > max) {
-					max = field[r][c];
+		for (int i = r; i < r + 3; i++) {
+			for (int j = c; j < c + 3; j++) {
+				if (field[i][j] > max) {
+					max = field[i][j];
 				}
 			}
 		}
