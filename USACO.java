@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 public class USACO {
-	public  int bronze(String filename) throws FileNotFoundException {
+	public static int bronze(String filename) throws FileNotFoundException {
 		File file = new File(filename);
 		Scanner sc = new Scanner(file);
 		int r = sc.nextInt();
@@ -44,7 +44,7 @@ public class USACO {
 		return (totalDepth * 72 * 72);
 
 	}
-	private int findMax(int r, int c, int[][] field) {
+	private static int findMax(int r, int c, int[][] field) {
 		int max = 0;
 		for (int i = r; i < r + 3; i++) {
 			for (int j = c; j < c + 3; j++) {
@@ -55,7 +55,7 @@ public class USACO {
 		}
 		return max;
 	}
-	public int silver(String filename) throws FileNotFoundException {
+	public static int silver(String filename) throws FileNotFoundException {
 		File file = new File(filename);
 		Scanner sc = new Scanner(file);
 		int r = sc.nextInt();
